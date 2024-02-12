@@ -47,6 +47,8 @@ foreach version in "" "3" "5" {
 	cap do "${directory_do}/JPE-2020-0781_figureA3.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_figureA4.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_figureA5.do" `version'
+	cap do "${directory_do}/JPE-2020-0781_figureA5_BE_withfixeddata.do" `version'
+
 	cap do "${directory_do}/JPE-2020-0781_figureA6.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_figureA7.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_figureA8.do" `version'
@@ -59,9 +61,13 @@ foreach version in "" "3" "5" {
 	cap do "${directory_do}/JPE-2020-0781_tableA2.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_tableA3.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_tableA4.do" `version'
+	cap do "${directory_do}/JPE-2020-0781_tableA4_pvalues.do" `version'
+
 	cap do "${directory_do}/JPE-2020-0781_tableA5.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_tableA6.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_tableA7_tableB3.do" `version'
+	cap do "${directory_do}/JPE-2020-0781_table_a7_table_b3_v2.do" `version'
+
 	cap do "${directory_do}/JPE-2020-0781_tableA8.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_tableA9.do" `version'
 	cap do "${directory_do}/JPE-2020-0781_tableA11.do" `version'
@@ -108,7 +114,16 @@ foreach version in "" "3" "5" {
 	display as text "Elapsed time: " as result %3.2f `=`r(t1)'/60'
 }	
 	
+foreach version in "" "3" "5" {
 	
+	timer on 1
+
+	version 13: do "${directory_do}/JPE-2020-0781_tableA10c_withfixeddata.do" `version'
+	
+	timer off 1
+	quietly timer list
+	display as text "Elapsed time: " as result %3.2f `=`r(t1)'/60'
+}	
 
 
 *Delete txt files
