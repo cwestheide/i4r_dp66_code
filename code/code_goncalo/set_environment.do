@@ -17,7 +17,7 @@ global root "${root_replication_bg}"
 // Data folder
 global data "${root}/datasets"
 
-global code "${root}/code"
+global code "${root}/code/code_goncalo"
 
 global results "${root}/results"
 cap mkdir "${root}/results"

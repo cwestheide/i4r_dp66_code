@@ -26,30 +26,6 @@ Stata.
 
 	3. Save the do-file and close. 
 
-
-INPUTS
---------
-
-	1) XXX.do
-
-	2) 
-
-
-
-		
-SECTIONS
---------
-0) HOUSEKEEPING. Sets the mood. Creates the folders and paths.
-
-1) 
-		Objective: Runs code X Y and Z
-
-2) 
-
-OUTPUT
-------
- - 
-
 */
 
 ******************************************************************************** 
@@ -68,31 +44,25 @@ clear frames
 if ("${root_replication_bg" == "") do `"`c(sysdir_personal)'profile.do"' // Run profile.do if the directory global is empty
 do "${root_replication_bg}/code/set_environment.do" // Set environment
 
-
 *****************************
-*** 1) 
-*****************************
-
-qui do XXX.do
-
-
-
-*****************************
-*** 2) 
+*** 1)  Sensitivity analyses
 *****************************
 
 // Sensitivity to changes in the outcome variable  (levels)
 cd "${code}"
 qui do sensitivity_outcome.do
 
-
 // Sensitivity to changes in fixed effects included
 cd "${code}"
 qui do sensitivity_fixed_effects.do
 
-
 // Sensitivity to different DiD estimators
 cd "${code}"
 qui do did_estimators.do
+
+// Compute the original pvalues of the original paper's Table 3
+cd "${code}"
+qui do original_pvalues_table3.do
+
 
 
